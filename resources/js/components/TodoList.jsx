@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ListRow from './ListRow';
 import AddTaskModal from './modals/AddTaskModal';
+import { ToastContainer, toast } from 'react-toastify';
 
 class TodoList extends Component{
     constructor(props){
@@ -15,7 +16,7 @@ class TodoList extends Component{
         this.getTodoList();
     }
 
-    // Get employee list
+    // Get todo list
     getTodoList = () => {
         let self = this;
         axios.get('/user/todo').then(function (response){
@@ -31,6 +32,7 @@ class TodoList extends Component{
         const date = `${current.getDate()} ${month[current.getMonth()]} ${current.getFullYear()}`;
         return (
             <div className="container">
+                <ToastContainer/>
                 <div className="row justify-content-center">
                     <div className="col-md-5">
                         <div className="card todo-card">

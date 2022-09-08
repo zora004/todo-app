@@ -40,6 +40,8 @@ a.btn-add-todo i:hover{
 }
 /* LIST BUTTON */
 .list-items button{
+    display: flex;
+    justify-content: space-between;
     border: none !important;
     text-align: start;
 }

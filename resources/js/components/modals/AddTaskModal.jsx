@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 class AddTaskModal extends Component{
     constructor(props){
@@ -8,7 +9,7 @@ class AddTaskModal extends Component{
 
         this.state = {
             taskTitle: null,
-            taskDescription: null
+            taskDescription: null,
         }
     }
 
@@ -27,13 +28,19 @@ class AddTaskModal extends Component{
     }
     // Store task
     storeTask = () => {
-        console.log(this.state.taskTitle);
         axios.post('user/todo ', {
             taskTitle: this.state.taskTitle,
             taskDescription: this.state.taskDescription
-        }).then(() => {
-            console.log('Done');
+        }).then((response) => {
+            $('#addModal').modal('toggle');
+            toast.success("Update success");
+            setTimeout(()=>{
+                window.location.reload(false);
+            },2000)
+        }).catch(function (error){
+            toast.error('Please try again');
         })
+
     }
 
     render(){
@@ -50,7 +57,7 @@ class AddTaskModal extends Component{
                     <form className='form'>
                         <div className="mb-3">
                             <label htmlFor="task-title" className="form-label">Task Title</label>
-                            <input type="text" className="form-control" id="task-title" placeholder="Title here" onChange={this.inputTaskTitle}/>
+                            <input type="text" className="form-control" id="task-title" placeholder="Title here" onChange={this.inputTaskTitle} required/>
                         </div>
                         <div className="mb-3">
                             <label htmlFor="task-description" className="form-label">Description</label>
