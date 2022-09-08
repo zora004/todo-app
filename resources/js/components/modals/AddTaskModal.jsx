@@ -33,7 +33,7 @@ class AddTaskModal extends Component{
             taskDescription: this.state.taskDescription
         }).then((response) => {
             $('#addModal').modal('toggle');
-            toast.success("Update success");
+            toast.success(response.data.message);
             setTimeout(()=>{
                 window.location.reload(false);
             },2000)
