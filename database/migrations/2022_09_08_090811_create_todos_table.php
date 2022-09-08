@@ -15,7 +15,10 @@ class CreateTodosTable extends Migration
     {
         Schema::create('todos', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->string('description')->nullable();
             $table->timestamps();
+            $table->foreignId('user_id');
         });
     }
 

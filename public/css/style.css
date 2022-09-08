@@ -1,0 +1,51 @@
+/* COLOR PALLETE */
+.colors{
+    color: #F4FCD9;
+    color: #C5D8A4;
+    color: #BB9981;
+    color: #534340;
+}
+/* ADD TODO BUTTON */
+a.btn-add-todo{
+    width: 50px;
+    position: absolute;
+    right: 0;
+    bottom: -15px;
+}
+a.btn-add-todo i{
+    font-size: 60px;
+    color: #BB9981;
+}
+a.btn-add-todo i:hover{
+    color: #534340;
+}
+
+/* LIST CARD */
+.todo-card{
+    height: 690px;
+    border: none;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+.todo-card .card-body{
+    overflow:auto;
+    overflow-y:auto;
+    overflow-x:auto;
+    height:600px;
+}
+.todo-card .card-header{
+    background-color: #BB9981;
+    height: 80px;
+    color: aliceblue;
+    font-size: 40px;
+}
+/* LIST BUTTON */
+.list-items button{
+    border: none !important;
+    text-align: start;
+}
+.list-items button:hover{
+    background-color: #F4FCD9;
+}
+.list-items button:active{
+    background-color: #C5D8A4;
+}

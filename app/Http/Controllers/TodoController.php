@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Todo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TodoController extends Controller
 {
@@ -14,7 +15,12 @@ class TodoController extends Controller
      */
     public function index()
     {
-        //
+        $lists = DB::table('todos')->orderBy('created_at')->get();
+        return response()->json([
+            'status' => 200,
+            'type' => 'Get list',
+            'list' => $lists
+        ]);
     }
 
     /**
@@ -35,7 +41,18 @@ class TodoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $addTask = DB::table('todos')->insert([
+            'title' => $request->taskTitle,
+            'description' => $request->taskDescription,
+            'created_at' => DB::raw('CURRENT_TIMESTAMP'),
+            'user_id' => 1
+        ]);
+
+        return response()->json([
+            'status' => 200,
+            'type' => 'Add task',
+            'message' => 'Task added successfully.'
+        ]);
     }
 
     /**
@@ -46,7 +63,7 @@ class TodoController extends Controller
      */
     public function show(Todo $todo)
     {
-        //
+
     }
 
     /**
